@@ -1,0 +1,35 @@
+{
+  "name": "react-todo-app",
+  "version": "1.0.0",
+  "description": "A simple to-do app in react js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build",
+    "build": "webpack -d && webpack-dev-server --content-base src/ --inline --hot --port 1234"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VinayakBorhade/react-todo-app.git"
+  },
+  "author": "Vin_04",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VinayakBorhade/react-todo-app/issues"
+  },
+  "homepage": "https://github.com/VinayakBorhade/react-todo-app#readme",
+  "dependencies": {
+    "@babel/core": "^7.6.4",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
+  }
+}
