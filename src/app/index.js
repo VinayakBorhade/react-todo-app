@@ -20,6 +20,12 @@ var TodoComponent =createReactClass({       //extends React.Component{
             }.bind(this),
             5000
         );
+        var todos=this.state.todos;
+        todos=todos.map(function(item, index){
+            return (
+                <TodoItem item={item} key={index}/>
+            );
+        });
         return(
             <div>
                 <p>Your Cheese</p>
@@ -27,15 +33,24 @@ var TodoComponent =createReactClass({       //extends React.Component{
                 {this.props.cheese.price} -
                 {this.props.cheese.quantity}
                 <p>age: {this.state.age}</p>
-                <ul id="todo-list">
-                    <li>{this.state.todos[0]}</li>
-                    <li>{this.state.todos[1]}</li>
-                    <li>{this.state.todos[2]}</li>
-                </ul>
+                <ul id="todo-list"> {todos} </ul>
             </div>
         );
     }
 } );
+
+// react component for todo-item
+var TodoItem=createReactClass({
+    render: function(){
+        return (
+        <li>
+            <div className="todo-item">
+                <span className="item-name">{this.props.item}</span>
+            </div>
+        </li>
+        );
+    }
+});
 
 var myCheese={name: "good cheese", price: "1.01", quantity: 15};
 
