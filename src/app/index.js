@@ -11,7 +11,7 @@ var TodoComponent =createReactClass({       //extends React.Component{
         };
     },
     render: function(){
-        // let component=this;
+        let component=this;
         var age=setTimeout(
             function(){
                 this.setState({
@@ -23,21 +23,27 @@ var TodoComponent =createReactClass({       //extends React.Component{
         var todos=this.state.todos;
         todos=todos.map(function(item, index){
             return (
-                <TodoItem item={item} key={index}/>
+                <TodoItem item={item} key={index} onDelete={this.onDelete} />
             );
-        });
+        }.bind(this));
         return(
-            <div>
-                <p>Your Cheese</p>
-                {this.props.cheese.name} - 
-                {this.props.cheese.price} -
-                {this.props.cheese.quantity}
+            <div id="todo-list">
+                <p>Click me!!</p>
                 <p>age: {this.state.age}</p>
-                <ul id="todo-list"> {todos} </ul>
+                <ul> {todos} </ul>
             </div>
         );
+    },
+    // custom functions...
+    onDelete: function(item){
+        var updatedTodos=this.state.todos.filter(function(val, index){
+            return item!==val;
+        });
+        this.setState({
+            todos: updatedTodos
+        });
     }
-} );
+});
 
 // react component for todo-item
 var TodoItem=createReactClass({
@@ -46,16 +52,20 @@ var TodoItem=createReactClass({
         <li>
             <div className="todo-item">
                 <span className="item-name">{this.props.item}</span>
+                <span className="item-delete" onClick={this.handleDelete}> X</span>
             </div>
         </li>
         );
+    },
+    // custom functions...
+    handleDelete: function(){
+        this.props.onDelete(this.props.item);
     }
 });
 
-var myCheese={name: "good cheese", price: "1.01", quantity: 15};
 
 // put the component into html page
 ReactDOM.render(
-    <TodoComponent cheese={myCheese} />,
+    <TodoComponent />,
     document.getElementById("todo-wrapper")
 );
