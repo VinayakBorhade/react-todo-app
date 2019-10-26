@@ -2,10 +2,23 @@ var React=require("react");
 var ReactDOM=require("react-dom");
 var createReactClass = require('create-react-class');
 require("./css/index.css");
+import { browserhistory, BrowserRouter as Router, Route } from 'react-router-dom';
 
 // below are the modules required...
 var TodoItem=require("./todoItem");
 var AddItem=require("./addItem");
+var About=require("./about");
+
+var App=createReactClass({
+    render: function(){
+        return (
+            <Router history={browserhistory} >
+                <Route exact path={"/"} component={TodoComponent} ></Route>
+                <Route path={"/about"} component={About} ></Route>
+            </Router>
+        );
+    }
+});
 
 // create component
 var TodoComponent =createReactClass({       //extends React.Component{
@@ -60,6 +73,6 @@ var TodoComponent =createReactClass({       //extends React.Component{
 
 // put the component into html page
 ReactDOM.render(
-    <TodoComponent />,
+    <App />,
     document.getElementById("todo-wrapper")
 );
