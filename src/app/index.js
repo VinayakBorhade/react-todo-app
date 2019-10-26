@@ -2,7 +2,7 @@ var React=require("react");
 var ReactDOM=require("react-dom");
 var createReactClass = require('create-react-class');
 require("./css/index.css");
-import { browserhistory, BrowserRouter as Router, Route } from 'react-router-dom';
+import { browserhistory, BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 // below are the modules required...
 var TodoItem=require("./todoItem");
@@ -46,6 +46,7 @@ var TodoComponent =createReactClass({       //extends React.Component{
         }.bind(this));
         return(
             <div id="todo-list">
+                <Link to={"/about"}>About</Link>
                 <p>Click me!!</p>
                 <p>age: {this.state.age}</p>
                 <ul> {todos} </ul>
